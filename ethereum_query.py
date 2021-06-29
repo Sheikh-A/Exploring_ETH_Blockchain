@@ -42,8 +42,10 @@ def get_block_cost(block_num):
     block_cost = 0  #YOUR CODE HERE
     #print(block_cost)
     for items in transactions:
-        current_cost = get_transaction_cost(items)
-        block_cost = block_cost + current_cost
+        cost = get_transaction_cost(items)
+        #print(cost)
+        block_cost = cost + block_cost
+    #print(block_cost)
     return block_cost
 
 # Return the hash of the most expensive transaction
