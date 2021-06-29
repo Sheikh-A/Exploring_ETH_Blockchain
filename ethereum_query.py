@@ -10,6 +10,7 @@ def get_transaction(tx):
     tx = w3.eth.get_transaction(tx)   #YOUR CODE HERE
     return tx
 
+
 # Return the gas price used by a particular transaction,
 #   tx is the transaction
 def get_gas_price(tx):
@@ -19,6 +20,7 @@ def get_gas_price(tx):
     #print(gas_price)
     return gas_price
 
+
 def get_gas(tx):
     tx = w3.eth.get_transaction_receipt(tx) #YOUR CODE HERE
     #print(tx)
@@ -26,10 +28,12 @@ def get_gas(tx):
     #print(gas)
     return gas
 
+
 def get_transaction_cost(tx):
     tx_cost = get_gas_price(tx) * get_gas(tx)
     #print(tx_cost)
     return tx_cost
+
 
 def get_block_cost(block_num):
     block = w3.eth.get_block(block_num)
@@ -43,17 +47,20 @@ def get_block_cost(block_num):
     return block_cost
 
 # Return the hash of the most expensive transaction
+
 def get_most_expensive_transaction(block_num):
     getBlock = w3.eth.get_block(block_num)
     transactions = getBlock['transactions']
-    highestCost = 0
-    highestNum = 0
-    for transNum in transactions:
-        current_cost = get_transaction_cost(transNum)
-        if current_cost > highestCost:
-            highestCost = current_cost
-            highestNum = transNum
-    max_tx = HexBytes(highestNum)  #YOUR CODE HERE
+    #print(transactions)
+    maxNum = 0
+    maxCost = 0
+    for items in transactions:
+        current_cost = get_transaction_cost(items)
+        if current_cost > maxCost:
+            maxCost = current_cost
+            maxNum = items
+    max_tx = HexBytes(maxNum)  #YOUR CODE HERE
+    #print(max_tx)
     return max_tx
 
 #if w3.isConnected():
