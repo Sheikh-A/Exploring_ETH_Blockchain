@@ -14,7 +14,7 @@ else:
 
 def get_transaction(tx):
     #get Transaction
-    tx = w3.eth.getTransaction(tx)
+    tx = w3.eth.get_transaction(tx)
     print(tx)
     return tx
 
