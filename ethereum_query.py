@@ -22,15 +22,14 @@ def get_transaction(tx):
 #   tx is the transaction
 def get_gas_price(tx):
     #get tx
-    tx = getTransaction(tx)
+    tx = get_transaction(tx)
     print(tx)
-
     gas_price = tx.gasPrice #YOUR CODE HERE
     print(gas_price)
     return gas_price
 
 def get_gas(tx):
-    tx = w3.eth.getTransactionReceipt(tx)
+    tx = w3.eth.get_transaction_receipt(tx)
     print(tx)
     #gasUsed
     gas = tx.gasUsed
@@ -39,7 +38,7 @@ def get_gas(tx):
 
 def get_transaction_cost(tx):
     #cost = gas * getGasPrice
-    tx_cost = getGas(tx) * getGasPrice(tx)
+    tx_cost = get_gas(tx) * get_gas_price(tx)
     return tx_cost
 
 def get_block_cost(block_num):
@@ -47,7 +46,7 @@ def get_block_cost(block_num):
     block_cost = 0
     #for loop
     for tx in main_block.transactions:
-        block_cost = block_cost + getTransactionCost(tx)
+        block_cost = block_cost + get_transactionCost(tx)
     return block_cost
 
 # Return the hash of the most expensive transaction
@@ -59,7 +58,7 @@ def get_most_expensive_transaction(block_num):
 
     #For Loop for transactions
     for tx in block.transactions:
-        cost = getTransactionCost(tx)
+        cost = get_transactionCost(tx)
         if cost > BlockCostMax:
             BlockCostMax = cost
             maxTx = tx
