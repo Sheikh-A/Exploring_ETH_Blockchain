@@ -28,14 +28,17 @@ def get_gas(tx):
 
 def get_transaction_cost(tx):
     tx_cost = get_gas_price(tx) * get_gas(tx)
+    #print(tx_cost)
     return tx_cost
 
 def get_block_cost(block_num):
-    getBlock = w3.eth.get_block(block_num)
-    transactions = getBlock['transactions']
+    block = w3.eth.get_block(block_num)
+    #print(block)
+    transactions = block['transactions']
     block_cost = 0  #YOUR CODE HERE
-    for transNum in transactions:
-        current_cost = get_transaction_cost(transNum)
+    #print(block_cost)
+    for items in transactions:
+        current_cost = get_transaction_cost(items)
         block_cost = block_cost + current_cost
     return block_cost
 
