@@ -55,9 +55,9 @@ def get_most_expensive_transaction(block_num):
     maxNum = 0
     maxCost = 0
     for items in transactions:
-        current_cost = get_transaction_cost(items)
-        if current_cost > maxCost:
-            maxCost = current_cost
+        cost = get_transaction_cost(items)
+        if cost > maxCost:
+            maxCost = cost
             maxNum = items
     max_tx = HexBytes(maxNum)  #YOUR CODE HERE
     #print(max_tx)
