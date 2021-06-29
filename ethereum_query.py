@@ -36,14 +36,12 @@ def get_gas(tx):
     return gas
 
 def get_transaction_cost(tx):
-    #cost = gas * getGasPrice
     tx_cost = get_gas(tx) * get_gas_price(tx)
     return tx_cost
 
 def get_block_cost(block_num):
     main_block = w3.eth.getBlock(main_block)
     block_cost = 0
-    #for loop
     for tx in main_block.transactions:
         block_cost = block_cost + get_transactionCost(tx)
     return block_cost
@@ -52,9 +50,7 @@ def get_block_cost(block_num):
 def get_most_expensive_transaction(block_num):
     block = w3.eth.getBlock(block_num)
     BlockCostMax = 0
-
     max_tx = HexBytes('0xf7f4905225c0fde293e2fd3476e97a9c878649dd96eb02c86b86be5b92d826b6')  #YOUR CODE HERE
-
     #For Loop for transactions
     for tx in block.transactions:
         cost = get_transactionCost(tx)
