@@ -32,7 +32,7 @@ def get_gas(tx):
     tx = w3.eth.get_transaction_receipt(tx) #YOUR CODE HERE
     print(tx)
     call = 'gasUsed'
-    gas = tx[call]
+    gas = tx['gasUsed']
     print(gas)
     return gas
 
